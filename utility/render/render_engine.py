@@ -91,4 +91,7 @@ def get_output_media(audio_file_path, timed_captions, background_video_data, vid
         video_filename = tempfile.NamedTemporaryFile(delete=False).name
         os.remove(video_filename)
 
-    return OUTPUT_FILE_NAME
+  
+# Generate download link after creating the video
+    video_link = get_video_download_link(OUTPUT_FILE_NAME)
+    return OUTPUT_FILE_NAME , video_link
