@@ -10,6 +10,8 @@ from moviepy.audio.fx.audio_loop import audio_loop
 from moviepy.audio.fx.audio_normalize import audio_normalize
 import requests
 
+from datetime import datetime
+
 def download_file(url, filename):
     with open(filename, 'wb') as f:
         response = requests.get(url)
@@ -26,8 +28,16 @@ def get_program_path(program_name):
     program_path = search_program(program_name)
     return program_path
 
-def get_output_media(audio_file_path, timed_captions, background_video_data, video_server):
-    OUTPUT_FILE_NAME = "rendered_video.mp4"
+def get_output_media(audio_file_path, timed_captions, background_video_data, video_server , topic):
+
+    output_dir = 'videos'
+    os.makedirs(output_dir, exist_ok=True)
+    now = datetime.now().strftime("%d_%m_%Y_%H_%M")
+  
+    videoname = f"rendered_video_{topic}_{now}.mp4"
+    
+    OUTPUT_FILE_NAME = os.path.join(output_dir, "rendered_video.mp4")
+    #OUTPUT_FILE_NAME = "rendered_video.mp4"
     magick_path = get_program_path("magick")
     print(magick_path)
     if magick_path:
