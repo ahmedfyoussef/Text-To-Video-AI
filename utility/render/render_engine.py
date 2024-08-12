@@ -28,6 +28,15 @@ def get_program_path(program_name):
     program_path = search_program(program_name)
     return program_path
 
+
+def get_video_download_link(filename):
+    with open(filename, "rb") as file:
+        video_contents = file.read()
+
+    b64_video = base64.b64encode(video_contents).decode()
+    return f'data:video/mp4;base64,{b64_video}'
+
+
 def get_output_media(audio_file_path, timed_captions, background_video_data, video_server , topic):
 
     output_dir = 'videos'
