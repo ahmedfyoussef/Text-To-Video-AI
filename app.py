@@ -43,6 +43,15 @@ if __name__ == "__main__":
 
     if background_video_urls is not None:
         video , downloadurllink = get_output_media(SAMPLE_FILE_NAME, timed_captions, background_video_urls, VIDEO_SERVER , SAMPLE_TOPIC)
+        print("video")
         print(video)
+        print("video")
+        print("script")
+        print(response)
+        print("script")
+        print("downloadurllink")
+        print(downloadurllink)
+        print("downloadurllink")
+    
     else:
         print("No video")
